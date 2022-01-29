@@ -1,21 +1,12 @@
 import "../styles/globals.scss";
-import { createTheme, NextUIProvider } from "@nextui-org/react";
+import type { AppProps } from "next/app";
+import Layout from "../components/Layout";
 
-const myDarkTheme = createTheme({
-  type: "dark",
-  theme: {
-    colors: {},
-    fonts: {
-      mono: "'Inconsolata', monospace",
-    },
-  },
-});
-
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <NextUIProvider theme={myDarkTheme}>
+    <Layout>
       <Component {...pageProps} />
-    </NextUIProvider>
+    </Layout>
   );
 }
 
