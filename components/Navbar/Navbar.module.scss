@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: 1rem 0;
 }
@@ -18,4 +18,13 @@
   margin: 0;
   padding: 0;
   background: crimson;
+}
+
+@media screen and (max-width: 800px) {
+  .logo {
+    font-size:medium;
+  }
+  .links > a {
+    margin: 0rem;
+  }
 }

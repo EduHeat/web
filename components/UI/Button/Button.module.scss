@@ -24,3 +24,10 @@
 .button:active {
   transform: scale(0.99);
 }
+
+@media screen and (max-width: 800px) {
+  .button {
+    font-size:small;
+    padding: 0.4rem 1rem;
+  }
+}
