@@ -1,7 +1,19 @@
-import React from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import styles from './Button.module.scss'
 
-const Button = () => {
-  return <div></div>;
+type ButtonProps<T extends ElementType> = {
+  as?: T;
+  children: ReactNode;
 };
 
-export default Button;
+const Button = <T extends ElementType = "button">({
+  as,
+  children,
+  ...props
+}: ButtonProps<T> & ComponentPropsWithoutRef<T>) => {
+  const Component = as || "button";
+
+  return <Component className={styles.button} {...props}>{children}</Component>;
+};
+
+export default Button
