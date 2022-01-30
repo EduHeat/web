@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { Card } from "../../components/UI";
 import styles from '../../styles/Learn.module.scss'
+import subjects from "../../lib/subjects";
 
 const Learn: NextPage = () => {
   return (
@@ -12,13 +13,7 @@ const Learn: NextPage = () => {
         </title>
       </Head>
       <div className={styles.container}>
-        <Card title="CSE" />
-        <Card title="CSE" />
-        <Card title="CSE" />
-        <Card title="CSE" />
-        <Card title="CSE" />
-        <Card title="CSE" />
-        <Card title="CSE" />
+        {subjects.map(s => <Card key={s.id} title={s.title} href={s.href} />)}
       </div>
     </div>
   )
