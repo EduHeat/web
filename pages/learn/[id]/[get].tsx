@@ -1,13 +1,11 @@
 import { NextPage } from "next"
 import { useRouter } from "next/router"
 
-const Subject: NextPage = () => {
+const Notes: NextPage = () => {
   const router = useRouter()
   return (
-    <div>
-      {router.query.id}
-    </div>
+    <div>{router.query.get}</div>
   )
 }
 
-export default Subject
+export default Notes

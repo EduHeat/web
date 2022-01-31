@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import { Card } from "../../components/UI";
-import styles from '../../styles/Learn.module.scss'
+import styles from '../../styles/Learn.module.scss';
 import subjects from "../../lib/subjects";
 
 const Learn: NextPage = () => {
