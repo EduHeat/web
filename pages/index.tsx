@@ -25,6 +25,7 @@ const Home: NextPage = () => {
           priority={false}
           placeholder="blur"
           blurDataURL="/study.svg"
+          alt='hero'
         />
       </div>
     </div>
