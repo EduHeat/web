@@ -1,6 +1,12 @@
 {
-  "name": "server",
+  "name": "@eduportal-cet/server",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "fastify": "^3.27.1"
+  }
 }
