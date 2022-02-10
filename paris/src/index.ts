@@ -11,6 +11,6 @@ app.use(json());
 
 app.listen(config.port, config.host, () => {
   console.log(`Listening at http://${config.host}:${config.port}`);
-  // connect();
+  connect();
   routes(app);
 });
