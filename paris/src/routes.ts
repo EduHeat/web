@@ -1,7 +1,9 @@
 import { Express, Response, Request } from "express";
 import { createUserHandler, deleteUserHandler } from "./controller/user.controller";
+import { createUserSessionHandler, invalidateUserSessionHandler } from "./controller/session.controller"
 import { validateRequest } from "./middleware";
-import { createUserSchema } from "./schemas/user.schema";
+import { createUserSchema, createUserSessionSchema } from "./schemas/user.schema";
+import requiresUser from "./middleware/requireUser";
 
 export default function(app: Express) {
   // health check route
@@ -10,5 +12,11 @@ export default function(app: Express) {
   });
 
   app.post("/api/users", validateRequest(createUserSchema), createUserHandler);
+
+  // login
+  app.post("/api/sessions", validateRequest(createUserSessionSchema), createUserSessionHandler);
+  //logout
+  app.delete("/api/sessions", requiresUser, invalidateUserSessionHandler);
+  
   app.delete("/api/users", deleteUserHandler);
 }
