@@ -36,6 +36,7 @@ export default function (app: Express) {
   // ---------------- users ----------------
   app.post('/api/users', validateRequest(createUserSchema), createUserHandler);
   app.delete('/api/users', deleteUserHandler);
+  // TODO: update user (settings)
 
   // ---------------- auth ----------------
   app.post(
@@ -53,7 +54,8 @@ export default function (app: Express) {
     [requiresUser, validateRequest(createForumPostSchema)],
     createForumPostHandler
   );
-  app.get('/api/forums/', getAllForumPostsHandler);
+  // TODO: slim it down so that it returns all posts titles only
+  app.get('/api/forums', getAllForumPostsHandler);
   app.get('/api/forums/:id', getAForumPostHandler);
   app.put(
     '/api/forums/:id',
@@ -65,4 +67,16 @@ export default function (app: Express) {
     [requiresUser, validateRequest(deleteForumPostSchema)],
     deleteAForumPostHandler
   );
+  // TODO: Like Post / Upvote functionality
+
+  // ---------------- MATERIALS -----------------
+
+  // TODO: Get all materials according to query (branch, year, material)
+  // TODO: Update materials
+  // TODO: Post materials
+  // TODO: Delete materials
+
+  // ---------------- CONTRIBUTORS ----------------
+
+  // TODO: those who contribute, add +1 to their contribution to them and add them to contributorslist
 }
