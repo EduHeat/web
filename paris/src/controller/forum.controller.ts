@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { get } from "lodash";
-import { allPosts, createPost, findPost, findPostAndDelete, findPostAndUpdate } from "../service/forum.service";
+import { allPosts, createPost, findPost, findPostAndDelete, findPostAndLikeOrDislike, findPostAndUpdate } from "../service/forum.service";
 
 export const createForumPostHandler = async (req: Request, res: Response) => {
   const userId = get(req, "user._id");
@@ -67,3 +67,25 @@ export const deleteAForumPostHandler = async (req: Request, res: Response) => {
 
   return res.status(204).send({ status: 'success' });
 }
+
+// like post
+export const likePostHandler = async (req: Request, res: Response) => {
+  const id = get(req, "params.id")
+  const userId = get(req, "user._id")
+
+  const post = await findPost({ id })
+
+  if (!post) {
+    return res.sendStatus(404)
+  }
+
+  if (!userId) {
+    return res.sendStatus(401)
+  }
+
+  await findPostAndLikeOrDislike({ id: post.id }, userId);
+
+  return res.status(200).send({ status: 'success' });
+}
+
+// comments

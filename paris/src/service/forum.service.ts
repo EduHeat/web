@@ -32,3 +32,15 @@ export const findPostAndDelete = async (input: FilterQuery<PostDocument>) => {
 export const allPosts = async () => {
   return Post.find({});
 };
+
+export const findPostAndLikeOrDislike = async (input: FilterQuery<PostDocument>, userId: string) => {
+  const post = await Post.findOne(input).exec()
+  let likes: string[] = post!.likes
+  const isThere = likes.find((id: string) => id === userId)
+  if (isThere) {
+    likes = likes.filter((id: string) => id !== userId)
+  } else {
+    likes = likes.concat(userId)
+  }
+  return Post.findOneAndUpdate(input, { likes });  
+}

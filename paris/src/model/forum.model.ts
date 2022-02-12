@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 import { UserDocument } from './user.model';
 
 export interface CommentDocument extends mongoose.Document {
-  id: string;
   user: UserDocument['_id'];
   username: string;
   content: string;

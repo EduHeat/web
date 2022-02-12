@@ -19,6 +19,7 @@ import {
   deleteAForumPostHandler,
   getAForumPostHandler,
   getAllForumPostsHandler,
+  likePostHandler,
   updateForumPostHandler,
 } from './controller/forum.controller';
 import {
@@ -66,6 +67,11 @@ export default function (app: Express) {
     '/api/forums/:id',
     [requiresUser, validateRequest(deleteForumPostSchema)],
     deleteAForumPostHandler
+  );
+  app.put(
+    '/api/forums/:id/like',
+    requiresUser,
+    likePostHandler
   );
   // TODO: Like Post / Upvote functionality
 
