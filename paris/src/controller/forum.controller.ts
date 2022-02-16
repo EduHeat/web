@@ -14,7 +14,7 @@ export const createForumPostHandler = async (req: Request, res: Response) => {
 export const getAllForumPostsHandler = async (req: Request, res: Response) => {
   const posts = await allPosts();
 
-  return posts;
+  return res.send(posts);
 }
 
 export const getAForumPostHandler = async (req: Request, res: Response) => {
@@ -87,5 +87,3 @@ export const likePostHandler = async (req: Request, res: Response) => {
 
   return res.status(200).send({ status: 'success' });
 }
-
-// comments

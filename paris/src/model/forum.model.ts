@@ -48,6 +48,6 @@ const PostSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Post = mongoose.model<PostDocument>('Forum', PostSchema);
+const Post = mongoose.model<PostDocument>('Post', PostSchema);
 
 export default Post;
