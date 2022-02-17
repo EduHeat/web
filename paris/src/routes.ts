@@ -15,15 +15,22 @@ import {
 } from './schemas/user.schema';
 import requiresUser from './middleware/requireUser';
 import {
+  createCommentHandler,
   createForumPostHandler,
   deleteAForumPostHandler,
+  deleteCommentHandler,
   getAForumPostHandler,
   getAllForumPostsHandler,
+  likePostHandler,
+  updateCommentHandler,
   updateForumPostHandler,
 } from './controller/forum.controller';
 import {
   createForumPostSchema,
+  deleteCommentSchema,
   deleteForumPostSchema,
+  postCommentSchema,
+  updateCommentSchema,
   updateForumPostSchema,
 } from './schemas/forum.schema';
 
@@ -47,7 +54,6 @@ export default function (app: Express) {
   app.get('/api/sessions', requiresUser, getUserSessionsHandler);
   app.delete('/api/sessions', requiresUser, invalidateUserSessionHandler);
 
-
   // ---------------- FORUM -----------------
   app.post(
     '/api/forums',
@@ -67,7 +73,23 @@ export default function (app: Express) {
     [requiresUser, validateRequest(deleteForumPostSchema)],
     deleteAForumPostHandler
   );
-  // TODO: Like Post / Upvote functionality
+  app.put('/api/forums/:id/like', requiresUser, likePostHandler);
+
+  app.post(
+    '/api/forums/:id/comment',
+    [requiresUser, validateRequest(postCommentSchema)],
+    createCommentHandler
+  );
+  app.put(
+    '/api/forums/:id/comment/:commentId',
+    [requiresUser, validateRequest(updateCommentSchema)],
+    updateCommentHandler
+  );
+  app.delete(
+    '/api/forums/:id/comment/:commentId',
+    [requiresUser, validateRequest(deleteCommentSchema)],
+    deleteCommentHandler
+  );
 
   // ---------------- MATERIALS -----------------
 

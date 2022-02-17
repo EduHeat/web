@@ -4,7 +4,7 @@ import {
   QueryOptions,
   UpdateQuery,
 } from 'mongoose';
-import Post, { PostDocument } from '../model/forum.model';
+import Post, { CommentDocument, PostDocument } from '../model/forum.model';
 
 export const createPost = async (input: DocumentDefinition<PostDocument>) => {
   return Post.create(input);
@@ -31,4 +31,45 @@ export const findPostAndDelete = async (input: FilterQuery<PostDocument>) => {
 
 export const allPosts = async () => {
   return Post.find({});
+};
+
+export const findPostAndLikeOrDislike = async (
+  input: FilterQuery<PostDocument>,
+  userId: string
+) => {
+  const post = await Post.findOne(input).exec();
+  let likes: string[] = post!.likes;
+  const isThere = likes.find((id: string) => id === userId);
+  if (isThere) {
+    likes = likes.filter((id: string) => id !== userId);
+  } else {
+    likes = likes.concat(userId);
+  }
+  return Post.findOneAndUpdate(input, { likes });
+};
+
+export const createComment = async (input: CommentDocument, postId: string) => {
+  const post = await Post.findOne({ id: postId }).exec();
+  post!.comments.push(input);
+  post!.save();
+};
+
+export const updateComment = async (
+  input: CommentDocument,
+  postId: string,
+  commentId: string
+) => {
+  const post = await Post.findOne({ id: postId }).exec();
+  
+  post!.save();
+};
+
+export const deleteComment = async (
+  input: CommentDocument,
+  postId: string,
+  commentId: string
+) => {
+  const post = await Post.findOne({ id: postId }).exec();
+  post!.comments.push(input);
+  post!.save();
 };
