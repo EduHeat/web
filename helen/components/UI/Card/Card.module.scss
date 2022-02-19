@@ -2,8 +2,9 @@
 
 .card {
   display: inline-block;
-  background-color: black;
   transition: all 0.2s ease-in-out;
+  background-color: #333;
+  border-radius: 10px;
   padding: 3rem;
 }
 
