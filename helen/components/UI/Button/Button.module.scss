@@ -10,24 +10,29 @@
   text-align: center;
   border: none;
   background-color: #000000;
-  background-image: radial-gradient(200% 70% at center 20%, rgba(48,44,45,1) -30%, rgba(50,46,47,1) 49%, rgba(22,18,19,1) 50%, rgba(22,18,19,1) 150%);
+  background-image: radial-gradient(
+    200% 70% at center 20%,
+    rgba(48, 44, 45, 1) -30%,
+    rgba(50, 46, 47, 1) 49%,
+    rgba(22, 18, 19, 1) 50%,
+    rgba(22, 18, 19, 1) 150%
+  );
   background-repeat: no-repeat;
   transition: background-position-y ease-in-out 250ms;
-  font-family: 'Zen Kurenaido', sans-serif;
   font-size: medium;
 }
 
 .button:hover {
   background-position-y: -50px;
 }
- 
+
 .button:active {
   transform: scale(0.99);
 }
 
 @media screen and (max-width: 800px) {
   .button {
-    font-size:small;
+    font-size: small;
     padding: 0.4rem 1rem;
   }
 }

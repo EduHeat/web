@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem 0;
 }
 
 .links > a {
@@ -11,7 +10,7 @@
 
 .logo {
   display: inline;
-  line-height:0.3;
+  line-height: 0.3;
 }
 
 .logo p {
@@ -22,7 +21,7 @@
 
 @media screen and (max-width: 800px) {
   .logo {
-    font-size:medium;
+    font-size: medium;
   }
   .links > a {
     margin: 0rem;

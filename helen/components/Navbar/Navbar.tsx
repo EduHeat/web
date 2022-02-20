@@ -14,7 +14,6 @@ const Navbar = () => {
     <div className={styles.links}>
       <Button as='a' href='/login'>LOGIN</Button>
       <Button as='a' href='/register'>REGISTER</Button>
-      <Button as='a' href='/forums'>FORUMS</Button>
     </div>
   </div>;
 };
