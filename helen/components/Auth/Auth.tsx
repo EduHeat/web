@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { FC } from "react";
 import subjects from "../../lib/subjects";
 import years from "../../lib/years";
+import { Avatar } from "../UI";
 import styles from './Auth.module.scss'
 
 interface AuthProps {
@@ -14,6 +15,25 @@ const Auth: FC<AuthProps> = ({ isRegister }) => {
       <form className={styles.formStyles}>
         <h2>Register | EduPortal-CET</h2>
         <div className={styles.innerForm}>
+          <div>
+            <p>Pick your avatar:</p>
+            <label>
+              <Avatar src="/avatars/1.svg" alt="the geek" />
+              <input type="radio" value="/avatars/1.svg" />
+            </label>
+            <label>
+              <Avatar src="/avatars/2.svg" alt="the geek" />
+              <input type="radio" value="/avatars/2.svg" />
+            </label>
+            <label>
+              <Avatar src="/avatars/4.svg" alt="the geek" />
+              <input type="radio" value="/avatars/4.svg" />
+            </label>
+            <label>
+              <Avatar src="/avatars/3.svg" alt="the geek" />
+              <input type="radio" value="/avatars/3.svg" />
+            </label>
+          </div>
           <input type="text" placeholder="name" className={styles.inputBox} />
           <input type="email" placeholder="email" className={styles.inputBox} />
           <input type="password" placeholder="password" className={styles.inputBox} />
@@ -37,7 +57,7 @@ const Auth: FC<AuthProps> = ({ isRegister }) => {
       <form className={styles.formStyles}>
         <h2>Login | EduPortal-CET</h2>
         <div className={styles.innerForm}>
-        <input type="email" placeholder="email" className={styles.inputBox} />
+          <input type="email" placeholder="email" className={styles.inputBox} />
           <input type="password" placeholder="password" className={styles.inputBox} />
           <p>Don&apos;t have an account yet? <Link href="/register">Register</Link></p>
           <button type="submit" className={styles.submitBtn}>Login</button>
