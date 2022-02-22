@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '../components/UI';
 import styles from '../styles/Home.module.scss';
 
@@ -13,8 +14,10 @@ const Home: NextPage = () => {
       <div className={styles.hero}>
         <div>
           <h1>GROW | BUILD | LEARN</h1>
-          <Button as="a" href="/learn">
-            GET STARTED
+          <Button>
+            <Link href={'/learn'}>
+              GET STARTED
+            </Link>
           </Button>
         </div>
         <Image
