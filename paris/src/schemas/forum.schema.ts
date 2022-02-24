@@ -26,26 +26,26 @@ export const deleteForumPostSchema = object({
 
 export const postCommentSchema = object({
   body: object({
-    content: string().required("Content of the comment can't be empty")
+    content: string().required("Content of the comment can't be empty"),
   }),
   params: object({
     id: string().required('Id of the post is required!'),
-  })
-})
+  }),
+});
 
 export const updateCommentSchema = object({
   body: object({
-    content: string().required("Content of the comment can't be empty")
+    content: string().required("Content of the comment can't be empty"),
   }),
   params: object({
     id: string().required('Id of the post is required!'),
-    commentId: string().required("Id of the comment is required")
-  })
-})
+    commentId: string().required('Id of the comment is required'),
+  }),
+});
 
 export const deleteCommentSchema = object({
   params: object({
     id: string().required('Id of the post is required!'),
-    commentId: string().required("Id of the comment is required")
-  })
-})
+    commentId: string().required('Id of the comment is required'),
+  }),
+});

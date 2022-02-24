@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 import { Branch, Year } from '../lib';
 import bcrypt from 'bcrypt';
 
@@ -26,12 +26,12 @@ const UserSchema = new mongoose.Schema(
     avatar_link: { type: String, required: true },
   },
   { timestamps: true }
-)
+);
 
-UserSchema.pre("save", async function (next) {
+UserSchema.pre('save', async function (next) {
   let user = this as UserDocument;
-  
-  if (!user.isModified("password")) return next();
+
+  if (!user.isModified('password')) return next();
 
   const salt = await bcrypt.genSalt(12);
 
@@ -40,14 +40,16 @@ UserSchema.pre("save", async function (next) {
   user.password = hash;
 
   return next();
-})
+});
 
-UserSchema.methods.comparePassword = async function(candidatePassword: string) {
+UserSchema.methods.comparePassword = async function (
+  candidatePassword: string
+) {
   const user = this as UserDocument;
 
   return bcrypt.compare(candidatePassword, user.password).catch((e) => false);
-}
+};
 
-const User = mongoose.model<UserDocument>("User", UserSchema);
+const User = mongoose.model<UserDocument>('User', UserSchema);
 
 export default User;

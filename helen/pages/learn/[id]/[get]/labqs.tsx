@@ -1,7 +1,5 @@
 const LabQs = () => {
-  return (
-    <div></div>
-  )
-}
+  return <div></div>;
+};
 
-export default LabQs
+export default LabQs;

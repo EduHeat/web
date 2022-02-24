@@ -9,6 +9,6 @@ const subjects = [
   { id: 8, title: 'FAT', href: '/learn/fat' },
   { id: 9, title: 'TE', href: '/learn/te' },
   { id: 10, title: 'B.PLAN', href: '/learn/bplan' },
-]
+];
 
-export default subjects
+export default subjects;

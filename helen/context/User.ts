@@ -9,7 +9,7 @@ interface UserCtxInterface {
     year: string;
     regNo: number;
     avatarLink: string;
-  }
+  };
 }
 
 export const UserContext = createContext<UserCtxInterface | null>(null);

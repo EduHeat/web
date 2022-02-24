@@ -5,7 +5,7 @@ export interface CommentDocument extends mongoose.Document {
   user: UserDocument['_id'];
   username: string;
   content: string;
-};
+}
 
 export interface PostDocument extends mongoose.Document {
   user: UserDocument['_id'];
@@ -43,7 +43,7 @@ const PostSchema = new mongoose.Schema(
     title: { type: String, required: true },
     body: { type: String, required: true },
     likes: { type: [String], default: [], required: false },
-    comments: { type: [CommentSchema], default: [], required: false }
+    comments: { type: [CommentSchema], default: [], required: false },
   },
   { timestamps: true }
 );

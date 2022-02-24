@@ -1,8 +1,3 @@
-const years = [
-  '1st-year',
-  '2nd-year',
-  '3rd-year',
-  '4th-year'
-]
+const years = ['1st-year', '2nd-year', '3rd-year', '4th-year'];
 
-export default years
+export default years;

@@ -15,9 +15,7 @@ const Home: NextPage = () => {
         <div>
           <h1>GROW | BUILD | LEARN</h1>
           <Button>
-            <Link href={'/learn'}>
-              GET STARTED
-            </Link>
+            <Link href={'/learn'}>GET STARTED</Link>
           </Button>
         </div>
         <Image
@@ -28,7 +26,7 @@ const Home: NextPage = () => {
           priority={false}
           placeholder="blur"
           blurDataURL="/study.svg"
-          alt='hero'
+          alt="hero"
         />
       </div>
     </div>

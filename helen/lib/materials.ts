@@ -6,4 +6,4 @@ const materials = [
   { title: 'PrevYr Qs', link: 'prevqs' },
 ];
 
-export default materials
+export default materials;

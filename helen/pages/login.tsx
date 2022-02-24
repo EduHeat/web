@@ -1,11 +1,11 @@
-import Auth from "../components/Auth"
+import Auth from '../components/Auth';
 
 const Login = () => {
   return (
     <>
       <Auth />
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

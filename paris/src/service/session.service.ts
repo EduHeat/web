@@ -1,10 +1,10 @@
-import { LeanDocument, FilterQuery, UpdateQuery, FlattenMaps } from "mongoose";
-import { get } from "lodash";
-import { UserDocument } from "../model/user.model";
-import Session, { SessionDocument } from "../model/session.model";
-import { sign, decode } from "../utils/jwt.utils";
-import { findUser } from "./user.service";
-import config from '../../config/default'
+import { LeanDocument, FilterQuery, UpdateQuery, FlattenMaps } from 'mongoose';
+import { get } from 'lodash';
+import { UserDocument } from '../model/user.model';
+import Session, { SessionDocument } from '../model/session.model';
+import { sign, decode } from '../utils/jwt.utils';
+import { findUser } from './user.service';
+import config from '../../config/default';
 
 export async function createSession(userId: string, userAgent: string) {
   const session = await Session.create({ user: userId, userAgent });
@@ -17,11 +17,11 @@ export function createAccessToken({
   session,
 }: {
   user:
-    | FlattenMaps<LeanDocument<UserDocument & { _id: any; }>>
-    | LeanDocument<Omit<UserDocument, "password">>;
+    | FlattenMaps<LeanDocument<UserDocument & { _id: any }>>
+    | LeanDocument<Omit<UserDocument, 'password'>>;
   session:
-    | Omit<SessionDocument, "password">
-    | LeanDocument<Omit<SessionDocument, "password">>;
+    | Omit<SessionDocument, 'password'>
+    | LeanDocument<Omit<SessionDocument, 'password'>>;
 }) {
   // Build and return the new access token
   const accessToken = sign(
@@ -40,10 +40,10 @@ export async function reIssueAccessToken({
   // Decode the refresh token
   const { decoded } = decode(refreshToken);
 
-  if (!decoded || !get(decoded, "_id")) return false;
+  if (!decoded || !get(decoded, '_id')) return false;
 
   // Get the session
-  const session = await Session.findById(get(decoded, "_id"));
+  const session = await Session.findById(get(decoded, '_id'));
 
   // Make sure the session is still valid
   if (!session || !session?.valid) return false;

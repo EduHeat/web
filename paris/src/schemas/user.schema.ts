@@ -27,4 +27,4 @@ export const createUserSessionSchema = object({
       .email('Must be a valid email')
       .required('Email is required'),
   }),
-})
+});

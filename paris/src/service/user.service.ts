@@ -33,7 +33,7 @@ export const validatePassword = async ({
   email: UserDocument['email'];
   password: string;
 }) => {
-  const user  = await User.findOne({ email })
+  const user = await User.findOne({ email });
 
   if (!user) {
     return false;

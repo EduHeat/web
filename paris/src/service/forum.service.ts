@@ -60,7 +60,7 @@ export const updateComment = async (
   commentId: string
 ) => {
   const post = await Post.findOne({ id: postId }).exec();
-  
+
   post!.save();
 };
 

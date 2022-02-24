@@ -1,0 +1,22 @@
+{
+  "name": "eduportal-cet",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "helen",
+    "paris"
+  ],
+  "repository": "https://github.com/sidmohanty11/eduportal-cet",
+  "author": "Sidharth Mohanty <sidmohanty11@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "husky": "^7.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "build": "concurrently --kill-others-on-fail \"yarn workspace helen build\"  \"yarn workspace paris build\"",
+    "lint": "concurrently --kill-others-on-fail \"yarn workspace helen lint\"  \"yarn workspace paris lint\"",
+    "format": "concurrently --kill-others-on-fail \"yarn workspace helen format\"  \"yarn workspace paris format\""
+  }
+}

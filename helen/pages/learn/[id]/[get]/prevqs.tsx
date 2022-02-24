@@ -1,7 +1,5 @@
 const PrevQs = () => {
-  return (
-    <div></div>
-  )
-}
+  return <div></div>;
+};
 
-export default PrevQs
+export default PrevQs;
