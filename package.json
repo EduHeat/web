@@ -19,5 +19,9 @@
     "build": "concurrently --kill-others-on-fail \"yarn workspace helen build\"  \"yarn workspace paris build\"",
     "lint": "concurrently --kill-others-on-fail \"yarn workspace helen lint\"  \"yarn workspace paris lint\"",
     "format": "concurrently --kill-others-on-fail \"yarn workspace helen format\"  \"yarn workspace paris format\""
+  },
+  "volta": {
+    "node": "16.11.0",
+    "yarn": "1.22.17"
   }
 }
