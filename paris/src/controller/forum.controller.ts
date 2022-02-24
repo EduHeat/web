@@ -93,7 +93,7 @@ export const likePostHandler = async (req: Request, res: Response) => {
 };
 
 export const createCommentHandler = async (req: Request, res: Response) => {
-  const userId = get(req, 'user._id');
+  // const userId = get(req, 'user._id');
   const body = req.body;
 
   const id = get(req, 'params.id');

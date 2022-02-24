@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema(
 );
 
 UserSchema.pre('save', async function (next) {
-  let user = this as UserDocument;
+  const user = this as UserDocument;
 
   if (!user.isModified('password')) return next();
 
@@ -47,7 +47,7 @@ UserSchema.methods.comparePassword = async function (
 ) {
   const user = this as UserDocument;
 
-  return bcrypt.compare(candidatePassword, user.password).catch((e) => false);
+  return bcrypt.compare(candidatePassword, user.password).catch(() => false);
 };
 
 const User = mongoose.model<UserDocument>('User', UserSchema);

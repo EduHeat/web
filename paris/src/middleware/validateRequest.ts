@@ -11,8 +11,8 @@ const validate =
         params: req.params,
       });
       return next();
-    } catch (err: any) {
-      return res.status(400).send(err.errors);
+    } catch (err) {
+      return res.status(400).send(err);
     }
   };
 
