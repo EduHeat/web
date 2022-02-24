@@ -12,12 +12,12 @@ const Years: NextPage = () => {
     <div>
       <Head>
         <title>
-          EduPortal-CET | Learn {title.toUpperCase()}
+          EduPortal-CET | Learn {title}
         </title>
       </Head>
       <ListItems back='/learn' iteratorArr={years} map={y => (
-          <Card key={y} title={y} href={`/learn/${title}/${y}`} />
-        )} />
+        <Card key={y} title={y} href={`/learn/${title}/${y}`} />
+      )} />
     </div>
   )
 }
