@@ -10,7 +10,6 @@ export async function login(email: string, password: string) {
     email,
     password,
   });
-  console.log(res);
   const {
     data: { accessToken, refreshToken },
   } = res;
@@ -20,6 +19,7 @@ export async function login(email: string, password: string) {
   }
   axios.defaults.headers.common['x-refresh'] = refreshToken;
   axios.defaults.headers.common['authorization'] = accessToken;
+  return res;
 }
 
 export async function getSessions() {

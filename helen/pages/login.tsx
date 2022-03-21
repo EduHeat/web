@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Link from 'next/link';
+import { login } from '../lib/api';
 import styles from '../styles/Auth.module.scss';
 
 const Login = () => {
@@ -17,13 +18,20 @@ const Login = () => {
         }
         return errors;
       }}
-      onSubmit={async (values, { setSubmitting }) => {
+      onSubmit={async (values, { setSubmitting, setErrors }) => {
+        const res = await login(values.email, values.password);
+        if (res.status !== 200) {
+          setErrors({ email: res.statusText, password: res.statusText });
+          setSubmitting(false);
+          return;
+        }
+        // successful login, do something
         setSubmitting(false);
       }}
     >
       {({ isSubmitting }) => (
         <Form className={styles.formStyles}>
-          <h2>Register | EduPortal-CET</h2>
+          <h2>Login | EduPortal-CET</h2>
           <div className={styles.innerForm}>
             <Field
               type="email"
