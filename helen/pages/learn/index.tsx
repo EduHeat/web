@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import subjects from '../../lib/subjects';
+import subjects from '../../consts/subjects';
 import ListItems from '../../components/ListItems/ListItems';
 import { Card } from '../../components/UI';
 

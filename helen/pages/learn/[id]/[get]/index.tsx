@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ListItems from '../../../../components/ListItems';
 import { Card } from '../../../../components/UI';
-import materials from '../../../../lib/materials';
+import materials from '../../../../consts/materials';
 import styles from '../../../../styles/Learn.module.scss';
 
 const Notes: NextPage = () => {

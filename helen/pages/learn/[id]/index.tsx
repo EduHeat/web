@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ListItems from '../../../components/ListItems';
 import { Card } from '../../../components/UI';
-import years from '../../../lib/years';
+import years from '../../../consts/years';
 
 const Years: NextPage = () => {
   const router = useRouter();

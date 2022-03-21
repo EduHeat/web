@@ -1,8 +1,9 @@
+import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Link from 'next/link';
 import React, { FC } from 'react';
-import subjects from '../../lib/subjects';
-import years from '../../lib/years';
+import subjects from '../../consts/subjects';
+import years from '../../consts/years';
 import styles from './Auth.module.scss';
 
 interface AuthProps {
@@ -15,7 +16,7 @@ const Auth: FC<AuthProps> = ({ isRegister }) => {
       <Formik
         initialValues={{ email: '', password: '' }}
         validate={(values) => {
-          const errors = {};
+          const errors: any = {};
           if (!values.email) {
             errors.email = 'Required';
           } else if (
@@ -113,7 +114,7 @@ const Auth: FC<AuthProps> = ({ isRegister }) => {
       <Formik
         initialValues={{ email: '', password: '' }}
         validate={(values) => {
-          const errors = {};
+          const errors: any = {};
           if (!values.email) {
             errors.email = 'Required';
           } else if (
@@ -123,11 +124,15 @@ const Auth: FC<AuthProps> = ({ isRegister }) => {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        onSubmit={async (values, { setSubmitting }) => {
+          const res = await axios.post('http://localhost:8000/api/sessions', {
+            email: values.email,
+            password: values.password,
+          });
+          console.log(res);
+          const getsess = await axios.get('http://localhost:8000/api/sessions');
+          console.log(getsess);
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting }) => (
