@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { LOGO } from '../../consts/college';
 import { Button } from '../UI';
 import styles from './Navbar.module.scss';
 
@@ -8,7 +9,7 @@ const Navbar = () => {
     <div className={styles.container}>
       <div>
         <h1 className={styles.logo}>
-          <Link href="/">EduPortal-CET</Link>
+          <Link href="/">{LOGO}</Link>
           <p>&nbsp;</p>
         </h1>
       </div>

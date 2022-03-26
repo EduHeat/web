@@ -1,25 +1,17 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Link from 'next/link';
+import { LOGO } from '../consts/college';
 import { login } from '../lib/api';
+import { loginValidation } from '../lib/validation';
 import styles from '../styles/Auth.module.scss';
 
 const Login = () => {
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
-      validate={(values) => {
-        const errors: any = {};
-        if (!values.email) {
-          errors.email = 'Required';
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-          errors.email = 'Invalid email address';
-        }
-        return errors;
-      }}
+      validate={loginValidation}
       onSubmit={async (values, { setSubmitting, setErrors }) => {
-        const res = await login(values.email, values.password);
+        const res = await login(values);
         if (res.status !== 200) {
           setErrors({ email: res.statusText, password: res.statusText });
           setSubmitting(false);
@@ -31,7 +23,7 @@ const Login = () => {
     >
       {({ isSubmitting }) => (
         <Form className={styles.formStyles}>
-          <h2>Login | EduPortal-CET</h2>
+          <h2>Login | {LOGO}</h2>
           <div className={styles.innerForm}>
             <Field
               type="email"
@@ -39,14 +31,22 @@ const Login = () => {
               placeholder="email"
               className={styles.inputBox}
             />
-            <ErrorMessage name="email" component="div" />
+            <ErrorMessage
+              className={styles.error}
+              name="email"
+              component="span"
+            />
             <Field
               type="password"
               placeholder="password"
               className={styles.inputBox}
               name="password"
             />
-            <ErrorMessage name="password" component="div" />
+            <ErrorMessage
+              className={styles.error}
+              name="password"
+              component="span"
+            />
             <p>
               Don&apos;t have an account yet?{' '}
               <Link href="/register">Register</Link>

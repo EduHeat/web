@@ -3,12 +3,13 @@ import Head from 'next/head';
 import subjects from '../../consts/subjects';
 import ListItems from '../../components/ListItems/ListItems';
 import { Card } from '../../components/UI';
+import { LOGO } from '../../consts/college';
 
 const Learn: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>EduPortal-CET | Learn</title>
+        <title>{LOGO} | Learn</title>
       </Head>
       <ListItems
         iteratorArr={subjects}

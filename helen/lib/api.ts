@@ -1,14 +1,14 @@
 import instance from 'axios';
 import Cookies from 'js-cookie';
+import { Login, Register } from './types';
 
 const axios = instance.create({
   baseURL: 'http://localhost:8000',
 });
 
-export async function login(email: string, password: string) {
+export async function login(login: Login) {
   const res = await axios.post('/api/sessions', {
-    email,
-    password,
+    ...login,
   });
   const {
     data: { accessToken, refreshToken },
@@ -27,7 +27,13 @@ export async function getSessions() {
   console.log(res);
 }
 
-export async function register() {}
+export async function register(register: Register) {
+  const res = await axios.post('/api/sessions', {
+    ...register,
+  });
+  console.log(res);
+  return res;
+}
 
 export async function logout() {}
 

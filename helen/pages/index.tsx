@@ -3,17 +3,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../components/UI';
+import { LOGO, SLOGAN } from '../consts/college';
 import styles from '../styles/Home.module.scss';
 
 const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>EduPortal-CET</title>
+        <title>{LOGO}</title>
       </Head>
       <div className={styles.hero}>
         <div>
-          <h1>GROW | BUILD | LEARN</h1>
+          <h1>{SLOGAN}</h1>
           <Button>
             <Link href={'/learn'}>GET STARTED</Link>
           </Button>

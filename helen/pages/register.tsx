@@ -1,34 +1,41 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Link from 'next/link';
-import subjects from '../consts/subjects';
-import years from '../consts/years';
+import { LOGO } from '../consts/college';
+import subjects, { Subject } from '../consts/subjects';
+import years, { Year } from '../consts/years';
+import { register } from '../lib/api';
+import { Register } from '../lib/types';
+import { registerValidation } from '../lib/validation';
 import styles from '../styles/Auth.module.scss';
 
 const Register = () => {
   return (
     <Formik
-      initialValues={{ email: '', password: '' }}
-      validate={(values) => {
-        const errors: any = {};
-        if (!values.email) {
-          errors.email = 'Required';
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-          errors.email = 'Invalid email address';
-        }
-        return errors;
+      initialValues={{
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        // @ts-ignore
+        registrationNo: '',
+        year: Year.FirstYear,
+        branch: Subject.CSE,
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+      validate={registerValidation}
+      onSubmit={async (values, { setSubmitting, setErrors }) => {
+        const res = await register(values);
+        if (res.status !== 200) {
+          setErrors({ email: res.statusText, password: res.statusText });
           setSubmitting(false);
-        }, 400);
+          return;
+        }
+        // successful login, do something
+        setSubmitting(false);
       }}
     >
       {({ isSubmitting }) => (
         <Form className={styles.formStyles}>
-          <h2>Register | EduPortal-CET</h2>
+          <h2>Register | {LOGO}</h2>
           <div className={styles.innerForm}>
             <Field
               type="text"
@@ -36,35 +43,55 @@ const Register = () => {
               name="name"
               className={styles.inputBox}
             />
-            <ErrorMessage name="name" component="div" />
+            <ErrorMessage
+              className={styles.error}
+              name="name"
+              component="div"
+            />
             <Field
               type="email"
               name="email"
               placeholder="email"
               className={styles.inputBox}
             />
-            <ErrorMessage name="email" component="div" />
+            <ErrorMessage
+              className={styles.error}
+              name="email"
+              component="span"
+            />
             <Field
               type="password"
               placeholder="password"
               className={styles.inputBox}
               name="password"
             />
-            <ErrorMessage name="password" component="div" />
+            <ErrorMessage
+              className={styles.error}
+              name="password"
+              component="div"
+            />
             <Field
               type="password"
               placeholder="confirm password"
               name="confirmPassword"
               className={styles.inputBox}
             />
-            <ErrorMessage name="confirmPassword" component="div" />
+            <ErrorMessage
+              className={styles.error}
+              name="confirmPassword"
+              component="div"
+            />
             <Field
               type="number"
-              name="registrationNumber"
+              name="registrationNo"
               placeholder="registration number"
               className={styles.inputBox}
             />
-            <ErrorMessage name="registrationNumber" component="div" />
+            <ErrorMessage
+              className={styles.error}
+              name="registrationNo"
+              component="div"
+            />
             <Field as="select" name="year" className={styles.selectBox}>
               <option value="none" selected disabled hidden>
                 Year
@@ -75,7 +102,11 @@ const Register = () => {
                 </option>
               ))}
             </Field>
-            <ErrorMessage name="name" component="div" />
+            <ErrorMessage
+              className={styles.error}
+              name="name"
+              component="div"
+            />
             <Field as="select" name="branch" className={styles.selectBox}>
               <option value="none" selected disabled hidden>
                 Branch
@@ -86,7 +117,11 @@ const Register = () => {
                 </option>
               ))}
             </Field>
-            <ErrorMessage name="name" component="div" />
+            <ErrorMessage
+              className={styles.error}
+              name="name"
+              component="div"
+            />
             <p>
               Already have an account? <Link href="/login">Login</Link>
             </p>

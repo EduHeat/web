@@ -1,6 +1,6 @@
-# eduportal-cet
+# EduHeat
 
-| Codebase| Description |
-| ------ | ------ |
-| helen | frontend (next.js) |
-| paris | server (express.js) |
+| Codebase | Description         |
+| -------- | ------------------- |
+| helen    | frontend (next.js)  |
+| paris    | server (express.js) |

@@ -1,12 +1,12 @@
 {
-  "name": "eduportal-cet",
+  "name": "eduheat",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
     "helen",
     "paris"
   ],
-  "repository": "https://github.com/sidmohanty11/eduportal-cet",
+  "repository": "https://github.com/EduHeat/web",
   "author": "Sidharth Mohanty <sidmohanty11@gmail.com>",
   "license": "MIT",
   "devDependencies": {

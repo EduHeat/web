@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ListItems from '../../../components/ListItems';
 import { Card } from '../../../components/UI';
+import { LOGO } from '../../../consts/college';
 import years from '../../../consts/years';
 
 const Years: NextPage = () => {
@@ -11,7 +12,9 @@ const Years: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>EduPortal-CET | Learn {title}</title>
+        <title>
+          {LOGO} | Learn {title}
+        </title>
       </Head>
       <ListItems
         back="/learn"
