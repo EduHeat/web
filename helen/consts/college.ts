@@ -1,7 +1,13 @@
-import DATA from '../app.json';
+let data: any;
 
-export const LOGO = DATA.name;
+try {
+  data = require('../app.json');
+} catch (err) {
+  data = {};
+}
 
-export const SECRET_CODE = DATA.secretCode;
+export const LOGO = data.name ?? '';
 
-export const SLOGAN = DATA.slogan;
+export const SECRET_CODE = data.secretCode ?? '';
+
+export const SLOGAN = data.slogan ?? '';
