@@ -4,7 +4,6 @@ import { LOGO } from '../consts/college';
 import subjects, { Subject } from '../consts/subjects';
 import years, { Year } from '../consts/years';
 import { register } from '../lib/api';
-import { Register } from '../lib/types';
 import { registerValidation } from '../lib/validation';
 import styles from '../styles/Auth.module.scss';
 
@@ -29,7 +28,7 @@ const Register = () => {
           setSubmitting(false);
           return;
         }
-        // successful login, do something
+        // successful register, do something
         setSubmitting(false);
       }}
     >

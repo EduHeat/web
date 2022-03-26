@@ -23,12 +23,12 @@ export async function login(login: Login) {
 }
 
 export async function getSessions() {
-  const res = await axios.get('/api/sessions');
+  const res = await axios.post('/api/sessions');
   console.log(res);
 }
 
 export async function register(register: Register) {
-  const res = await axios.post('/api/sessions', {
+  const res = await axios.post('/api/users', {
     ...register,
   });
   console.log(res);
